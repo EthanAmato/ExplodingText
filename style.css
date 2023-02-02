@@ -1,0 +1,144 @@
+:root {  
+    --green: rgb(42, 252, 152);
+    --purple: rgb(104, 35, 223);
+  }
+  
+  @keyframes float {
+    from, to {
+      transform: translateY(-0%);
+    }
+    
+    50% {    
+      transform: translateY(-30%);
+    }
+  }
+  
+  @keyframes background-pan {
+    from {
+      background-position: 1000% center;
+    }
+    
+    to {
+      background-position: 0% center;
+    }
+  }
+  
+  body {
+    height: 100vh;
+    background-color: black;
+    margin: 0rem;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  
+  .line {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .word {
+    color: white;
+    font-size: clamp(2rem, 8vw, 10rem);
+    font-family: "Rubik", sans-serif;
+    margin: 0rem;
+    text-transform: uppercase;
+    transition: opacity 250ms ease;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  /* Set everything in #text 
+  to opacity 0.2 that's a .word and also NOT .fancy being hovered
+  when there is a .fancy element being hovered */
+  #text:has(.fancy:hover) .word:not(.fancy:hover) {
+    opacity: 0.2;
+  }
+  
+  /* Make sure letters stay together in same line 
+  but we can also modify they positions with transform*/
+  .fancy span {
+    display: inline-block;
+  }
+  
+  
+  /* When you start hover, letters explode at this duration */
+  .fancy:hover > .outer {
+    transition-duration: 800ms;
+  }
+  
+  /* When you end hover, letters realign at this duration */
+  .fancy > .outer {
+    transition: transform 350ms ease;
+  }
+  
+  /* Gives it the effect of moving up and down */
+  .fancy:hover > .outer > .inner {
+    animation: float 5s ease infinite;
+  }
+  
+
+  
+  /* color transition linear gradient as css animation */
+  .fancy:hover > .outer > .inner > .letter {
+    background: linear-gradient(
+      to right,
+      var(--purple),
+      var(--green),
+      var(--purple)
+    );
+    background-size: 1000%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: background-pan 150s linear infinite;
+  }
+  
+
+/* Would be easier with sass */
+  .fancy:hover > .outer:nth-child(1) {
+    transform: translate(-80%, 60%) rotate(80deg);
+  }
+  
+  .fancy:hover > .outer:nth-child(2) {
+    transform: translate(-40%, 40%) rotate(4deg);
+  }
+  
+  .fancy:hover > .outer:nth-child(3) {
+    transform: translate(-20%, 80%) rotate(-6deg);
+  }
+  
+  .fancy:hover > .outer:nth-child(4) {
+    transform: translate(0%, 8%) rotate(-8deg);
+  }
+  
+  .fancy:hover > .outer:nth-child(5) {
+    transform: translate(0%, -60%) rotate(37deg);
+  }
+  
+  .fancy:hover > .outer:nth-child(6) {
+    transform: translate(0%, 20%) rotate(-3deg);
+  }
+  
+  .fancy:hover > .outer:nth-child(7) {
+    transform: translate(0%, -40%) rotate(-5deg);
+  }
+  
+  .fancy:hover > .outer:nth-child(8) {
+    transform: translate(0%, 15%) rotate(10deg);
+  }
+  
+  .fancy:hover > .outer:nth-child(9) {
+    transform: translate(0%, -50%) rotate(8deg);
+  }
+  
+  .fancy:hover > .outer:nth-child(10) {
+    transform: translate(0%, 15%) rotate(-6deg);
+  }
+  
+  .fancy:hover > .outer:nth-child(11) {
+    transform: translate(50%, -10%) rotate(-3deg);
+  }
+  
+
